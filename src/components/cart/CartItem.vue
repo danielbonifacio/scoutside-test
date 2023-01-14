@@ -39,7 +39,6 @@
 </template>
 
 <script lang="ts">
-import { CartItem } from "../../types";
 import { defineComponent } from "vue";
 import useCartStore from "@/store/cart.store";
 import CloseButton from "../CloseButton.vue";
@@ -57,7 +56,7 @@ export default defineComponent({
   methods: { formatPrice },
   props: {
     item: {
-      type: Object as () => CartItem,
+      type: Object,
       required: true,
     },
   },
