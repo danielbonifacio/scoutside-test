@@ -1,27 +1,39 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <div class="flex justify-center items-center h-screen gap-4">
+    <CartDrawer />
+    <button
+      @click="cart.addItem"
+      class="rounded-md bg-purple-500 text-white px-4 py-2 hover:ring hover:bg-purple-600 focus:ring"
+    >
+      Add To Cart
+    </button>
+    <button
+      @click="cart.clearCart"
+      class="rounded-md bg-blue-500 text-white px-4 py-2 hover:ring hover:bg-blue-600 focus:ring"
+    >
+      Clear Cart
+    </button>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
+import useCartStore from "@/store/cart.store";
+import CartDrawer from "@/components/cart/CartDrawer.vue";
 
 export default defineComponent({
   name: "App",
-  components: {
-    HelloWorld,
+  components: { CartDrawer },
+  setup() {
+    const cart = useCartStore();
+    return { cart };
   },
 });
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+body,
+html {
+  overflow-x: hidden;
 }
 </style>
